@@ -1,16 +1,16 @@
 /**
  * Created by Gareth Slinn April 2015
- */
+ */ 
 
 //NOTE: Due to callback is using jsonp cb must be in the global scope.
 (function(){
     var tags='london';
     var script = document.createElement('script');
-    script.src='http://api.flickr.com/services/feeds/photos_public.gne?format=json&jsoncallback=sainsburys.cb&tags='+tags;
+    script.src='http://api.flickr.com/services/feeds/photos_public.gne?format=json&jsoncallback=localStorageFlickr.cb&tags='+tags;
     document.head.appendChild(script);
 })();
 
-var sainsburys = (function( $ ) {
+var localStorageFlickr = (function( $ ) {
     return {
 
         storage: {
@@ -37,7 +37,7 @@ var sainsburys = (function( $ ) {
             var row = $('.row');
             var selected = [];
             var img;
-            var storage = sainsburys.storage;
+            var storage = localStorageFlickr.storage;
 
             $(data.items).each(function () {
                 img = this.media.m.split("/").pop();
